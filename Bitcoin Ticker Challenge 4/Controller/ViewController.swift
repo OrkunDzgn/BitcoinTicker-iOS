@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+import SDWebImage
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -91,9 +92,14 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         coinNameTV.text = ""
         coinSymbolTV.text = ""
         coinPriceTV.text = ""
+        
         coinNameTV.insertText(coinData.coinName!)
         coinSymbolTV.insertText(coinData.coinSymbol!)
         coinPriceTV.insertText(String(format:"%.4f", coinData.coinPrice!))
+        
+        coinImageView.sd_setShowActivityIndicatorView(true)
+        coinImageView.sd_setIndicatorStyle(.gray)
+        coinImageView.sd_setImage(with: URL(string: coinData.coinIconUrl!.lowercased()), placeholderImage: UIImage(named: "placeholder.png"))
     }
 
 }
