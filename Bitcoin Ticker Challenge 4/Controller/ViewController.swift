@@ -42,6 +42,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         currencyPicker.selectRow(0, inComponent: 0, animated: true)
         currencyPicker.delegate?.pickerView!(currencyPicker, didSelectRow: 0, inComponent: 0)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
