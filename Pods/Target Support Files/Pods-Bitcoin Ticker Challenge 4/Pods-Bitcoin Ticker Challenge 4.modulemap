@@ -1,0 +1,6 @@
+framework module Pods_Bitcoin_Ticker_Challenge_4 {
+  umbrella header "Pods-Bitcoin Ticker Challenge 4-umbrella.h"
+
+  export *
+  module * { export * }
+}
