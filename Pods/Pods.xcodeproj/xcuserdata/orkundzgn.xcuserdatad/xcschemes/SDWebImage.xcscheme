@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '613E42FF2CE5B70655199A39FBE2E2E5'
-               BlueprintName = 'Pods-Bitcoin Ticker Challenge 4'
+               BlueprintIdentifier = '0025FE9909D5231694CD433C5566BA9D'
+               BlueprintName = 'SDWebImage'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-Bitcoin Ticker Challenge 4.framework'>
+               BuildableName = 'SDWebImage.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

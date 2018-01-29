@@ -11,8 +11,9 @@ import UIKit
 
 class CoinDataModel {
     
-    var coinName : String = "Bitcoin"
-    var coinSymbol : String = "BTC"
-    var coinPrice : Double = 1
+    var coinName : String?
+    var coinSymbol : String?
+    var coinPrice : Double?
+    var coinIconUrl : String?
     
 }

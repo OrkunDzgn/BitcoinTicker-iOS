@@ -21,6 +21,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     var currenyArray = [String]()
     var baseURL : String = "https://api.coinmarketcap.com/v1/ticker/"
     var finalURL : String = ""
+    var coinData : CoinDataModel = CoinDataModel()
     
 
     override func viewDidLoad() {
@@ -65,14 +66,35 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func networkingJob() {
-        Alamofire.request(finalURL).responseJSON { response in
+        Alamofire.request(finalURL).responseJSON { [weak weakSelf = self] response in
             
-            if let json = response.result.value {
-                //var temp = JSON(CoinDataModel: json)
+            if let jsonString = response.result.value {
+                weakSelf?.coinData =  (weakSelf?.parseData(data: jsonString))!
+                weakSelf?.updateUI()
             }
         }
     }
-
+    
+    func parseData(data:Any) -> CoinDataModel {
+        let result : CoinDataModel = CoinDataModel()
+        var temp = JSON(data)
+        
+        result.coinName = temp[0]["name"].string
+        result.coinSymbol = temp[0]["symbol"].string
+        result.coinPrice = temp[0]["price_usd"].doubleValue
+        result.coinIconUrl = "https://firebasestorage.googleapis.com/v0/b/crypto-track-6d8bd.appspot.com/o/" + result.coinSymbol! + ".png?alt=media"
+        
+        return result
+    }
+    
+    func updateUI() {
+        coinNameTV.text = ""
+        coinSymbolTV.text = ""
+        coinPriceTV.text = ""
+        coinNameTV.insertText(coinData.coinName!)
+        coinSymbolTV.insertText(coinData.coinSymbol!)
+        coinPriceTV.insertText(String(format:"%.4f", coinData.coinPrice!))
+    }
 
 }
 
